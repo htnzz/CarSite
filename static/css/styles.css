@@ -403,6 +403,14 @@ body {
     display: none;
 }
 
+#myModal h2 {
+    font-size: 22px;
+}
+
+#myModal h3 {
+    font-size: 18px;
+}
+
 .modal-content {
     width: 100%;
     max-width: 600px;
