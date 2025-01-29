@@ -270,7 +270,7 @@ body {
     min-height: 90px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,  max-height 0.7s ease;;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -706,25 +706,48 @@ input::placeholder, textarea::placeholder {
         background-color: #202020;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.7s ease;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: auto;
+        max-height: 50px; /* Начальная высота */
+        color: white;
+        overflow: hidden; /* Чтобы скрыть содержимое при начальном состоянии */
+    }
+
+    .grid-item.expanded,
+    .step.expanded{
+        max-height: 250px;
+    }
+
+    .grid-item.expanded p,
+    .step.expanded p{
+        max-height: 500px; /* Устанавливаем высоту, соответствующую тексту */
+    }
+
+    .grid-item.expanded h3,
+    .step.expanded h3{
+        color: #cf6100;
+        margin: 0 0 10px 0;
     }
 
     .grid-item h3,
     .step h3 {
+        margin: 0;
         text-align: center;
-        margin-bottom: 10px;
         font-size: 16px;
         color: #f8f8f6;
+        transition: color 0.5s ease, margin 0.3s ease;
     }
 
-    .grid-item p {
-        display: none;
+    .grid-item p,
+    .step p{
+        max-height: 0; /* Начальная высота */
+        overflow: hidden; /* Скрываем всё, что выходит за границы */
+        transition: max-height 0.5s ease; /* Плавная анимация изменения высоты */
+        margin: 0;
     }
 
     .about-us {
@@ -765,12 +788,10 @@ input::placeholder, textarea::placeholder {
         margin-top: 10px;
     }
 
-    .step p {
-        display: none;
-    }
-
     .step {
         margin: 10px 0;
+        min-height: 49px;
+        max-height: 50px;
     }
 
     #myModal {

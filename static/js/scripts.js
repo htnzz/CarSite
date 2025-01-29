@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setInterval(changeReview, 10000);
             })
             .catch(error => {
+
                 console.error('Ошибка загрузки отзывов:', error);
                 loader.style.display = 'none'; // Скрываем крутилку при ошибке
             });
@@ -185,6 +186,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         window.open(whatsappUrl, "_blank");
     }
+
+    const gridItems = document.querySelectorAll('.grid-item, .step');
+
+    gridItems.forEach((item) => {
+        item.addEventListener('click', function () {
+            item.classList.toggle('expanded');
+        });
+    });
+
     // Загружаем отзывы при загрузке страницы
     loadReviews();
 });
